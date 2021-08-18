@@ -17,6 +17,27 @@ depositBtn.addEventListener('click', function(){
     const balanceTotal = document.getElementById('balance-total')
     const balanceTotalText = balanceTotal.innerText;
     const balanceTotalNumber = parseFloat(balanceTotalText);  
+
     balanceTotal.innerText = balanceTotalNumber + newDepositNumber;
 
 })
+
+withdrawBtn.addEventListener('click', function(){
+    const withdrawTotal = document.getElementById('withdraw-total')
+    const withdrawTotalText = withdrawTotal.innerText;
+    const withdrawTotalNumber = parseFloat(withdrawTotalText);
+
+    const newWithdraw = document.getElementById('withdraw-input')
+    const newWithdrawText = newWithdraw.value;
+    const newWithdrawNumber = parseFloat(newWithdrawText);
+
+    withdrawTotal.innerText = withdrawTotalNumber + newWithdrawNumber;
+    newWithdraw.value = ''
+
+    const balanceTotal = document.getElementById('balance-total')
+    const balanceTotalText = balanceTotal.innerText;
+    const balanceTotalNumber = parseFloat(balanceTotalText);  
+
+    balanceTotal.innerText = balanceTotalNumber - newWithdrawNumber;
+})
+
