@@ -37,24 +37,29 @@ function changeBalance(type){
      
     const newMoney = document.getElementById(`${type}-input`)
     const newMoneyText = newMoney.value;
-    console.log(newMoneyText)
+    // console.log(newMoneyText)
     
     if(newMoneyText.length != 0){               //NaN fixed
         const newMoneyNumber = parseFloat(newMoneyText)
-
-        previousTotal.innerText = previousTotalNumber + newMoneyNumber;
-        newMoney.value = '';
-    
-        const balanceTotal = document.getElementById('balance-total')
-        const balanceTotalText = balanceTotal.innerText;
-        const balanceTotalNumber = parseFloat(balanceTotalText);  
-    
-        if (type == "withdraw"){
-            balanceTotal.innerText = balanceTotalNumber - newMoneyNumber;
+        if(newMoneyNumber >0){                  // bariar for negative number
+            previousTotal.innerText = previousTotalNumber + newMoneyNumber;
+            newMoney.value = '';
+        
+            const balanceTotal = document.getElementById('balance-total')
+            const balanceTotalText = balanceTotal.innerText;
+            const balanceTotalNumber = parseFloat(balanceTotalText);  
+        
+            if (type == "withdraw"){
+                balanceTotal.innerText = balanceTotalNumber - newMoneyNumber;
+            }
+            else{
+            balanceTotal.innerText = balanceTotalNumber + newMoneyNumber;
+            }
         }
         else{
-        balanceTotal.innerText = balanceTotalNumber + newMoneyNumber;
+            alert('invalid input')
         }
+    
     }
     else{
         alert("Please enter a number")
